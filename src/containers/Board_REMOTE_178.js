@@ -27,16 +27,6 @@ const Board = () => {
   const calculateGrade = () => {
     if (quizScore == 4 && repeatedMove == 0) {
       speak({ text: "Congratulations! You've been awarded an A Grade" });
-<<<<<<< HEAD
-      return "Congratulations! You've been awarded an A Grade"
-    } else if (quizScore == 3 && repeatedMove <= 1) {
-      speak({ text: "Congratulations! You've been awarded a B Grade" });
-      return "Congratulations! You've been awarded a B Grade"
-    } else if (quizScore > 0) {
-      speak({ text: "Congratulations! You've passed the quiz" });
-      return "Congratulations! You've passed the quiz"
-    } 
-=======
       return "Congratulations! You've been awarded an A Grade";
     } else if (quizScore == 3 && repeatedMove <= 1) {
       speak({ text: "Congratulations! You've been awarded a B Grade" });
@@ -45,7 +35,6 @@ const Board = () => {
       speak({ text: "Congratulations! You've passed the quiz" });
       return "Congratulations! You've passed the quiz";
     }
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
   };
 
   useEffect(() => {
@@ -55,74 +44,47 @@ const Board = () => {
         break;
       case "one":
       case "top left":
-<<<<<<< HEAD
-=======
       case "1":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(1);
         break;
       case "two":
       case "top centre":
-<<<<<<< HEAD
-=======
       case "2":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(2);
         break;
       case "three":
       case "top right":
-<<<<<<< HEAD
-=======
       case "3":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(3);
         break;
       case "four":
       case "left":
-<<<<<<< HEAD
-=======
       case "4":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(4);
         break;
       case "five":
       case "centre":
-<<<<<<< HEAD
-=======
       case "5":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(5);
         break;
       case "six":
       case "right":
-<<<<<<< HEAD
-=======
       case "6":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(6);
         break;
       case "seven":
       case "bottom left":
-<<<<<<< HEAD
-=======
       case "7":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(7);
         break;
       case "eight":
       case "bottom centre":
-<<<<<<< HEAD
-=======
       case "8":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(8);
         break;
       case "nine":
       case "bottom right":
-<<<<<<< HEAD
-=======
       case "9":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         draw(9);
         break;
       case "stop":
@@ -177,11 +139,7 @@ const Board = () => {
       // Setting the winner in case of a win
       if (checkWin()) {
         var msg = calculateGrade();
-<<<<<<< HEAD
-        setWinner(turn === 0 ? "Player 1 Wins! \n" : "Player 2 Wins! \n"+msg);
-=======
         setWinner(turn === 0 ? "Player 1 Wins! \n" : "Player 2 Wins! \n");
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
       } else if (checkTie()) {
         var msg = calculateGrade();
         // Setting the winner to tie in case of a tie
@@ -265,11 +223,7 @@ const Board = () => {
 
   const initGame = async () => {
     await speak({
-<<<<<<< HEAD
-      text: " you can either click on the boxes or say the number of the box you want to click on. The boxes range from 1 to 9. Player 1 will go first",
-=======
       text: " you can click on the boxes or say the number of the box you want to click on or say the position of the box. The boxes range from 1 to 9. The available positions are top left, top centre, top right, left, centre, right, bottom left, bottom centre, bottom right. Player 1 will go first",
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
     });
     listen();
   };
@@ -279,16 +233,6 @@ const Board = () => {
       <div className={`winner ${winner !== "" ? "" : "shrink"}`}>
         {/* Display the current winner */}
         <div className="winner-text">{winner}</div>
-<<<<<<< HEAD
-        {(quizScore !== 0 && quizScore !=null) && <div>Quiz Score: {quizScore}</div>}
-        {repeatedMove !== null && <div>Invalid Moves: {repeatedMove}</div>}
-
-        {/* Button used to reset the board */}
-        <button onClick={() => {
-          setRepeatedMove(0);
-          setReset(true)
-        }}>Reset Board</button>
-=======
         {quizScore !== 0 && quizScore != null && (
           <div>Quiz Score: {quizScore}</div>
         )}
@@ -303,7 +247,6 @@ const Board = () => {
         >
           Reset Board
         </button>
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
       </div>
       <div ref={boardRef} className="board">
         <div className="input input-1" onClick={() => draw(1)}></div>
