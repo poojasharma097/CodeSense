@@ -1,15 +1,4 @@
 export default {
-<<<<<<< HEAD
-  person: [
-    {
-      question: "How many hands does a person have?",
-      options: [1, 2, 3, 4],
-      answer: 2,
-    },
-    {
-      question: "How many bones does a person have?",
-      options: [100, 200, 300, 206],
-=======
   questions: [
     {
       question: "Which of the following sorting algorithms is the fastest for sorting small arrays?",
@@ -19,7 +8,6 @@ export default {
     {
       question: "Which of the following method is used for sorting in merge sort?",
       options: ["partitioning", "merging", "exchanging", "selection"],
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
       answer: 206,
     },
     {

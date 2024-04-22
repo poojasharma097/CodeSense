@@ -14,34 +14,6 @@ const Landing = () => {
     onResult: (result) => {
       console.log(result);
       setValue(result);
-<<<<<<< HEAD
-        switch (result) {
-          case "detect object":
-            result = "detect object";
-            navigate("/assessment/object-detection");
-            stop();
-            break;
-          case "give quiz":
-            result = "give quiz";
-            navigate("/assessment/quiz");
-            stop();
-            break;
-          case "play game":
-            result = "play game";
-            navigate("/assessment/board");
-            stop();
-            break;
-          case "stop":
-            result = "stop";
-            stop();
-            break;
-          default:
-            speak({
-              text: "Give your command.",
-            });
-            break;
-        }
-=======
       switch (result) {
         case "detect object":
           result = "detect object";
@@ -68,26 +40,16 @@ const Landing = () => {
           });
           break;
       }
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
     },
   });
 
   const initListening = async () => {
-<<<<<<< HEAD
-  await speak({
-    text: "Welcome to Beyond Braille, we are listening to you",
-  });
-
-  listen({ interimResults: true });
-};
-=======
     await speak({
       text: "Welcome to Beyond Braille, we are listening to you",
     });
 
     listen({ interimResults: true });
   };
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
 
   return (
     <div className="Landing">
@@ -121,8 +83,4 @@ const Landing = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Landing;
-=======
-export default Landing;
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a

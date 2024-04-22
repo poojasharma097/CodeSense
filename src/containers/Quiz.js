@@ -29,11 +29,6 @@ const Quiz = () => {
     },
     {
       question: "Who wrote the famous play 'Romeo and Juliet'?",
-<<<<<<< HEAD
-      options: ["William Shakespeare", "Charles Dickens", "Jane Austen", "Mark Twain"],
-      answer: "William Shakespeare",
-    },    
-=======
       options: [
         "William Shakespeare",
         "Charles Dickens",
@@ -42,7 +37,6 @@ const Quiz = () => {
       ],
       answer: "William Shakespeare",
     },
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
   ]);
 
   const [question, setQuestion] = useState(0);
@@ -117,11 +111,7 @@ const Quiz = () => {
         break;
 
       case "read options":
-<<<<<<< HEAD
-        for(let i=0;i<questions[question].options.length;i++){
-=======
         for (let i = 0; i < questions[question].options.length; i++) {
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
           speak({ text: questions[question].options[i], queue: true });
         }
         break;
@@ -145,20 +135,12 @@ const Quiz = () => {
         break;
 
       case "read option 3":
-<<<<<<< HEAD
-        case "read option three":
-=======
       case "read option three":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         speak({ text: questions[question].options[2], queue: false });
         break;
 
       case "read option 4":
-<<<<<<< HEAD
-        case "read option four":
-=======
       case "read option four":
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         speak({ text: questions[question].options[3], queue: false });
         break;
 
@@ -240,25 +222,6 @@ const Quiz = () => {
     <div className="Quiz">
       <h1>Quiz</h1>
       <div className="question-section">
-<<<<<<< HEAD
-        <p className="question"> {questions[question] && questions[question].question}</p>
-        <div className="options">
-          {questions[question] && questions[question].options &&  questions[question].options.map((option, i) => {
-            return (
-              <button
-                className={`option ${
-                  selected[question] === option ? "selected" : ""
-                }`}
-                key={i}
-                onClick={() => {
-                  selectAnswer(i);
-                }}
-              >
-                {option}
-              </button>
-            );
-          })}
-=======
         <p className="question">
           {" "}
           {questions[question] && questions[question].question}
@@ -281,7 +244,6 @@ const Quiz = () => {
                 </button>
               );
             })}
->>>>>>> a9e7a6b1c754d16dcd8601bc487a111faff6122a
         </div>
       </div>
       <div className="bottom-buttons">
