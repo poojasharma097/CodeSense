@@ -1,6 +1,6 @@
 import "./Landing.scss";
 import { useSpeechSynthesis, useSpeechRecognition } from "react-speech-kit";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
@@ -9,6 +9,48 @@ const Landing = () => {
   const [value, setValue] = useState("");
 
   const { speak, speaking, cancel } = useSpeechSynthesis();
+
+  const handleKeyPress = useCallback((event) => {
+    if (event.key === 'q') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/assessment/quiz");
+      stop();
+    }
+    else if (event.key === 'g') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/assessment/board");
+      stop();
+    }
+    else if (event.key === 'c') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/CodeSense");
+      stop();
+    }
+    else if (event.key === 'h') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/");
+      stop();
+    }
+    else if (event.key === 's') {
+      console.log(`Key pressed: ${event.key}`);
+      initListening();
+    }
+    else {
+      speak({
+        text: "Invalid key! Try again. ",
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    // attach the event listener
+    document.addEventListener('keydown', handleKeyPress);
+
+    // remove the event listener
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [handleKeyPress]);
 
   const { listen, stop } = useSpeechRecognition({
     onResult: (result) => {
@@ -35,9 +77,9 @@ const Landing = () => {
           stop();
           break;
         default:
-          speak({
-            text: "Give your command.",
-          });
+          // speak({
+          //   text: "Give your command.",
+          // });
           break;
       }
     },
