@@ -15,12 +15,9 @@
 
 ### Landing Page
 
-We can navigate to object detection, quiz or game page via the navbar
+We can navigate to algorithm visualizer, quiz or game page via the navbar
 
-- We can also click on the give command button, it starts voice recognition and accepts commands:
-  -- give exam
-  -- detect object
-  -- play game
+- We can also click on the give command button, it starts voice recognition and accepts commands: give quiz, play game
 
 ### Quiz/examination page
 
@@ -45,14 +42,9 @@ We can navigate to object detection, quiz or game page via the navbar
 - select option 4
 - read selected option
 - read all selected options
+- reset
+- play game
 - stop
-
-### Object Detection Page
-
-![image](https://user-images.githubusercontent.com/71427348/165988648-af79cbcd-a828-4472-9a05-6695fd47a838.png)
-
-- As soon as the page opens up, the camera turns on after loading
-- the system starts detecting whatever is in front of the camera and reads it out loud
 
 ### Game/Tic Tac Toe Page
 
@@ -67,11 +59,14 @@ We can navigate to object detection, quiz or game page via the navbar
 - We can also use this page using voice recognition by clicking on the start game button
 - The list of commands recognized by the system are as follows:
 - top left / 1
-- top / 2
+- top center/ 2
 - top right / 3
 - left / 4
 - center / 5
 - right / 6
 - bottom left / 7
-- bottom / 8
+- bottom center/ 8
 - bottom right / 9
+- reset
+- give quiz
+- stop
