@@ -1,10 +1,11 @@
 import "./Board.scss";
 import { useSpeechSynthesis, useSpeechRecognition } from "react-speech-kit";
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Board = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const quizScore = location?.state?.score;
   const [repeatedMove, setRepeatedMove] = useState(0);
@@ -95,6 +96,11 @@ const Board = () => {
         setRepeatedMove(0);
         setReset(true);
         break;
+      case "give quiz":
+        setRepeatedMove(0);
+        setReset(true);
+        navigate("/assessment/quiz");
+        stop();
       default:
         break;
     }

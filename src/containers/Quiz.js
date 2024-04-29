@@ -44,6 +44,8 @@ const Quiz = () => {
   const [selected, setSelected] = useState([]);
   const [score, setScore] = useState(0);
   const { speak, speaking, cancel } = useSpeechSynthesis();
+  const [finish, setFinish] = useState(false);
+  const [reset, setReset] = useState(false);
 
   const { listen, stop } = useSpeechRecognition({
     onResult: (result) => {
@@ -194,6 +196,24 @@ const Quiz = () => {
         speak({ text: "Stopped", queue: false });
         break;
 
+      case "reset":
+        setFinish(false);
+        setReset(true);
+        setScore(0);
+        setQuestion(0);
+        setSelected([]);
+        break;
+
+      case "play game":
+        setFinish(false);
+        setReset(true);
+        setScore(0);
+        setQuestion(0);
+        setSelected([]);
+        navigate("/assessment/board");
+        stop();
+        break;
+
       default:
         break;
     }
@@ -209,18 +229,40 @@ const Quiz = () => {
     } else if (where === "prev" && question > 0) {
       setQuestion(question - 1);
     } else if (where === "next" && question === questions.length - 1) {
-      stop();
+      setFinish(true);
       speak({
         text: `You have completed the quiz, your score is ${score}`,
         queue: false,
       });
-      navigate("/assessment/quiz", { state: { score } });
+      // navigate("/assessment/quiz", { state: { score } });
     }
   };
+
+  // useEffect(async () => {
+  //   setSelected([]);
+  //   setScore(0);
+  //   setFinish(false);
+  //   setQuestion(0);
+  //   setReset(false);
+  // }, [reset, setReset, setFinish]);
 
   return (
     <div className="Quiz">
       <h1>Quiz</h1>
+      <div className={`winner ${(finish === true) ? "" : "shrink"}`}>
+        {/* Display the current winner */}
+        <div className="winner-text">Well Done!</div>
+        {(score !== 0 && score !=null && (finish === true)) && <div>Quiz Score: {score}</div>}
+
+        {/* Button used to reset the board */}
+        <button onClick={() => {
+          setScore(0);
+          setQuestion(0);
+          setSelected([]);
+          setReset(true);
+          setFinish(false);
+        }}>Reset Board</button>
+      </div>
       <div className="question-section">
         <p className="question">
           {" "}

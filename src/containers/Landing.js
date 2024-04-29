@@ -45,10 +45,11 @@ const Landing = () => {
 
   const initListening = async () => {
     await speak({
-      text: "Welcome to Beyond Braille, we are listening to you",
+      text: "Welcome to Beyond Braille, we are listening to you. Give your command.",
     });
 
     listen({ interimResults: true });
+    listen();
   };
 
   return (
