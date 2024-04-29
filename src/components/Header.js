@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png";
+import logo2 from "../assets/logo2.jpg";
 
 import { Link } from "react-router-dom";
 import "./Header.scss";
@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header>
       <Link to="/">
-        <img src={logo} alt="logo" />
+        <img src={logo2} alt="logo" />
       </Link>
 
       <nav>

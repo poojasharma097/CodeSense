@@ -1,137 +1,130 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   questions: [
     {
-      question: "Which of the following sorting algorithms is the fastest for sorting small arrays?",
-      options: ["Quick sort", "Shell sort", "Insertion sort", "Heap sort"],
-      answer: 2,
+      question: "Which of the following sorting algorithms has a worst-case time complexity of O(n^2)?",
+      options: ["Merge sort", "Quick sort", "Bubble sort", "Heap sort"],
+      answer: "Bubble sort",
     },
     {
-      question: "Which of the following method is used for sorting in merge sort?",
-      options: ["partitioning", "merging", "exchanging", "selection"],
-      answer: 206,
+      question: "What is the time complexity of binary search?",
+      options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+      answer: "O(log n)",
     },
     {
-      question: "What enables vision in a human?",
-      options: ["Eyes", "Nose", "Ears", "Mouth"],
-      answer: "Eyes",
+      question: "Which data structure is typically used to implement a priority queue?",
+      options: ["Linked list", "Stack", "Queue", "Heap"],
+      answer: "Heap",
     },
     {
-      question: "What is the largest organ in the human body?",
-      options: ["Skin", "Heart", "Brain", "Lungs"],
-      answer: "Skin",
-    },
-  ],
-  cell_phone: [
-    {
-      question:
-        "What is the maximum resolution of the rear camera on the iPhone 13 Pro?",
-      options: [
-        "12 megapixels",
-        "16 megapixels",
-        "20 megapixels",
-        "24 megapixels",
-      ],
-      answer: "12 megapixels",
+      question: "What is the main advantage of using a hash table for searching?",
+      options: ["Constant time complexity for all operations", "Ease of implementation", "Efficient memory usage", "Preservation of insertion order"],
+      answer: "Constant time complexity for all operations",
     },
     {
-      question:
-        "What does the acronym 'LTE' stand for in reference to cell phone networks?",
-      options: [
-        "Long-Term Evolution",
-        "Limited-Time Exclusive",
-        "Low-Tier Encryption",
-        "Local Terminal Exchange",
-      ],
-      answer: "Long-Term Evolution",
+      question: "Which of the following algorithms is used to find the shortest path in a weighted graph?",
+      options: ["Breadth-first search", "Depth-first search", "Dijkstra's algorithm", "A* algorithm"],
+      answer: "Dijkstra's algorithm",
     },
     {
-      question:
-        "Which company first introduced a smartphone with a touchscreen display?",
-      options: ["Apple", "Blackberry", "Nokia", "Samsung"],
-      answer: "Apple",
+      question: "What is the primary purpose of dynamic programming?",
+      options: ["Searching", "Sorting", "Optimization", "Memory management"],
+      answer: "Optimization",
     },
     {
-      question:
-        "What is the maximum storage capacity available on the Samsung Galaxy S21 Ultra?",
-      options: ["256 GB", "512 GB", "1 TB", "2 TB"],
-      answer: "1 TB",
-    },
-  ],
-  apple: [
-    {
-      question:
-        "Which of the following is a variety of apple that is green and tart in taste?",
-      options: ["Granny Smith", "Red Delicious", "Honeycrisp", "Fuji"],
-      answer: "Granny Smith",
+      question: "Which of the following sorting algorithms is stable?",
+      options: ["Quick sort", "Heap sort", "Merge sort", "Selection sort"],
+      answer: "Merge sort",
     },
     {
-      question: "How many calories are there in a medium-sized apple?",
-      options: [50, 75, 100, 125],
-      answer: 75,
+      question: "What is the time complexity of the best-case scenario for quicksort?",
+      options: ["O(n log n)", "O(n)", "O(n^2)", "O(log n)"],
+      answer: "O(n log n)",
     },
     {
-      question: "What is the scientific name for the common apple?",
-      options: [
-        "Malus pumila",
-        "Citrus sinensis",
-        "Prunus persica",
-        "Musa acuminata",
-      ],
-      answer: "Malus pumila",
+      question: "What data structure is typically used for implementing a stack?",
+      options: ["Linked list", "Array", "Hash table", "Queue"],
+      answer: "Array",
     },
     {
-      question: "Which country is the largest producer of apples in the world?",
-      options: ["China", "United States", "India", "Italy"],
-      answer: "China",
-    },
-  ],
-  cat: [
-    {
-      question: "What is a group of cats called?",
-      options: ["Herd", "Pack", "Flock", "Clowder"],
-      answer: "Clowder",
+      question: "What is the time complexity of the insertion operation in a binary search tree?",
+      options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+      answer: "O(log n)",
     },
     {
-      question: "What is the average lifespan of an indoor cat?",
-      options: ["5-7 years", "8-10 years", "11-14 years", "15-20 years"],
-      answer: "15-20 years",
+      question: "Which of the following is NOT a type of algorithm design paradigm?",
+      options: ["Divide and conquer", "Dynamic programming", "Backtracking", "Looping"],
+      answer: "Looping",
     },
     {
-      question: "What is the scientific name for the domestic cat?",
-      options: ["Felis catus", "Canis lupus", "Equus ferus", "Panthera leo"],
-      answer: "Felis catus",
+      question: "Which of the following is a characteristic of a greedy algorithm?",
+      options: ["Backtracking", "Dynamic programming", "Optimizing for local optimal solutions", "Exploring all possible solutions"],
+      answer: "Optimizing for local optimal solutions",
     },
     {
-      question:
-        "Which of the following is a breed of cat that is known for its hairless appearance?",
-      options: ["Persian", "Siamese", "Sphynx", "Bengal"],
-      answer: "Sphynx",
-    },
-  ],
-  bottle: [
-    {
-      question:
-        "Which of the following materials is commonly used to make reusable water bottles?",
-      options: ["Plastic", "Aluminum", "Glass", "Ceramic"],
-      answer: "Aluminum",
+      question: "What is the space complexity of the merge sort algorithm?",
+      options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+      answer: "O(n)",
     },
     {
-      question:
-        "What type of bottle is designed to keep hot drinks hot and cold drinks cold for extended periods of time?",
-      options: ["Thermos", "Squeeze", "Sport", "Collapsible"],
-      answer: "Thermos",
+      question: "Which sorting algorithm has the best average-case time complexity?",
+      options: ["Heap sort", "Insertion sort", "Bubble sort", "Merge sort"],
+      answer: "Merge sort",
     },
     {
-      question:
-        "Which of the following is a type of bottle that is designed to hold wine?",
-      options: ["Growler", "Mason jar", "Flask", "Decanter"],
-      answer: "Decanter",
+      question: "What is the main advantage of using a radix sort over other comparison-based sorting algorithms?",
+      options: ["Stable sorting", "Efficient memory usage", "Linear time complexity", "Ease of implementation"],
+      answer: "Linear time complexity",
     },
     {
-      question:
-        "What is the name of the plastic bottle with a tapered neck and a screw-on cap that is commonly used for soft drinks?",
-      options: ["PET bottle", "HDPE bottle", "LDPE bottle", "PP bottle"],
-      answer: "PET bottle",
+      question: "Which of the following data structures is NOT used in graph traversal algorithms?",
+      options: ["Stack", "Queue", "Heap", "Hash table"],
+      answer: "Heap",
     },
+    {
+      question: "What is the time complexity of the worst-case scenario for mergesort?",
+      options: ["O(n log n)", "O(n)", "O(n^2)", "O(log n)"],
+      answer: "O(n log n)",
+    },
+    {
+      question: "What is the main advantage of using a linked list over an array for implementing a stack?",
+      options: ["Constant time complexity for access", "Dynamic resizing", "Better cache locality", "Constant time complexity for insertion and deletion"],
+      answer: "Constant time complexity for insertion and deletion",
+    },
+    {
+      question: "Which of the following algorithms is used to find the strongly connected components in a graph?",
+      options: ["Breadth-first search", "Depth-first search", "Kruskal's algorithm", "Tarjan's algorithm"],
+      answer: "Tarjan's algorithm",
+    },
+    {
+      question: "What is the primary goal of the quicksort algorithm?",
+      options: ["Minimize comparisons", "Minimize swaps", "Achieve stability", "Achieve linear time complexity"],
+      answer: "Minimize comparisons",
+    },
+    {
+      question: "Which of the following is NOT a stable sorting algorithm?",
+      options: ["Merge sort", "Bubble sort", "Insertion sort", "Quick sort"],
+      answer: "Quick sort",
+    },
+    {
+      question: "What is the main advantage of using a linked list over an array for implementing a queue?",
+      options: ["Dynamic resizing", "Better cache locality", "Constant time complexity for access", "Constant time complexity for insertion and deletion"],
+      answer: "Dynamic resizing",
+    },
+    {
+      question: "Which sorting algorithm has the worst time complexity for both average and worst-case scenarios?",
+      options: ["Selection sort", "Bubble sort", "Insertion sort", "Merge sort"],
+      answer: "Selection sort",
+    },
+    {
+      question: "What is the time complexity of the worst-case scenario for quicksort with a bad pivot selection strategy?",
+      options: ["O(n)", "O(n log n)", "O(n^2)", "O(log n)"],
+      answer: "O(n^2)",
+    },
+      {
+        question: "What is the time complexity of the best-case scenario for selection sort?",
+        options: ["O(n)", "O(n^2)", "O(n log n)", "O(log n)"],
+        answer: "O(n^2)",
+      },
   ],
 };

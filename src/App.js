@@ -7,7 +7,7 @@ import Header from "./components/Header";
 import Landing from "./containers/Landing";
 import LinearSearch from "./containers/LinearSearch";
 import BinarySearch from "./containers/BinarySearch";
-// import Website from "./public/CodeSense/CodeSense"
+import Documentation from "./containers/Documentation"
 
 // Importing the CSS File
 import "./App.css";
@@ -22,6 +22,7 @@ function App() {
           <Route path="/CodeSense" element={<Choose2 />} />
           <Route path="/CodeSense/Linear-Search" element={<LinearSearch />} />
           <Route path="/CodeSense/Binary-Search" element={<BinarySearch />} />
+          <Route path="/CodeSense/Documentation" element={<Documentation />} />
           <Route path="/assessment/board" element={<Board />} />
           <Route path="/assessment/quiz" element={<Quiz />} />
           <Route path="/" element={<Landing />} />

@@ -4,16 +4,31 @@
     align-items: center;
     h3{
         color: white;
-        font-size: 25px;
+        font-size: 35px;
         padding-bottom: 50px;
     }
 
     div{
         padding-bottom: 50px;
         button{
-            margin: 0 10px;
-            font-size: 20px;
+            margin: 0 15px;
+            font-size: 30px;
+            background: #7300BA;
+            font-family: 'Montserrat', sans-serif;  
         }
     }
 
+}
+.read{
+    margin: 0 15px;
+    font-size: 30px;
+    background: #c90b8a;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.voice{
+    margin: 0 15px;
+    font-size: 30px;
+    background: #2e0fdd;
+    font-family: 'Montserrat', sans-serif;
 }
