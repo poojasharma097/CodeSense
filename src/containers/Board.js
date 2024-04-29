@@ -1,10 +1,11 @@
 import "./Board.scss";
 import { useSpeechSynthesis, useSpeechRecognition } from "react-speech-kit";
-import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Board = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const quizScore = location?.state?.score;
   const [repeatedMove, setRepeatedMove] = useState(0);
@@ -24,17 +25,59 @@ const Board = () => {
     },
   });
 
+  const handleKeyPress = useCallback((event) => {
+    if (event.key === 'q') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/assessment/quiz");
+      stop();
+    }
+    else if (event.key === 'g') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/assessment/board");
+      stop();
+    }
+    else if (event.key === 'c') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/CodeSense");
+      stop();
+    }
+    else if (event.key === 'h') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/");
+      stop();
+    }
+    else if (event.key === 's') {
+      console.log(`Key pressed: ${event.key}`);
+      initGame();
+    }
+    else {
+      speak({
+        text: "Invalid key! Try again. ",
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    // attach the event listener
+    document.addEventListener('keydown', handleKeyPress);
+
+    // remove the event listener
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [handleKeyPress]);
+
   const calculateGrade = () => {
     if (quizScore == 4 && repeatedMove == 0) {
       speak({ text: "Congratulations! You've been awarded an A Grade" });
-      return "Congratulations! You've been awarded an A Grade";
+      return "Congratulations! You've been awarded an A Grade"
     } else if (quizScore == 3 && repeatedMove <= 1) {
       speak({ text: "Congratulations! You've been awarded a B Grade" });
-      return "Congratulations! You've been awarded a B Grade";
+      return "Congratulations! You've been awarded a B Grade"
     } else if (quizScore > 0) {
       speak({ text: "Congratulations! You've passed the quiz" });
-      return "Congratulations! You've passed the quiz";
-    }
+      return "Congratulations! You've passed the quiz"
+    } 
   };
 
   useEffect(() => {
@@ -95,6 +138,11 @@ const Board = () => {
         setRepeatedMove(0);
         setReset(true);
         break;
+      case "give quiz":
+        setRepeatedMove(0);
+        setReset(true);
+        navigate("/assessment/quiz");
+        stop();
       default:
         break;
     }
@@ -233,20 +281,14 @@ const Board = () => {
       <div className={`winner ${winner !== "" ? "" : "shrink"}`}>
         {/* Display the current winner */}
         <div className="winner-text">{winner}</div>
-        {quizScore !== 0 && quizScore != null && (
-          <div>Quiz Score: {quizScore}</div>
-        )}
+        {(quizScore !== 0 && quizScore !=null) && <div>Quiz Score: {quizScore}</div>}
         {repeatedMove !== null && <div>Invalid Moves: {repeatedMove}</div>}
 
         {/* Button used to reset the board */}
-        <button
-          onClick={() => {
-            setRepeatedMove(0);
-            setReset(true);
-          }}
-        >
-          Reset Board
-        </button>
+        <button onClick={() => {
+          setRepeatedMove(0);
+          setReset(true)
+        }}>Reset Board</button>
       </div>
       <div ref={boardRef} className="board">
         <div className="input input-1" onClick={() => draw(1)}></div>

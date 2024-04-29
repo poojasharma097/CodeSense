@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSpeechSynthesis, useSpeechRecognition } from "react-speech-kit";
 import "./Quiz.scss";
@@ -36,6 +36,8 @@ const Quiz = () => {
   const [selected, setSelected] = useState([]);
   const [score, setScore] = useState(0);
   const { speak, speaking, cancel } = useSpeechSynthesis();
+  const [finish, setFinish] = useState(false);
+  const [reset, setReset] = useState(false);
 
   const { listen, stop } = useSpeechRecognition({
     onResult: (result) => {
@@ -43,6 +45,48 @@ const Quiz = () => {
       setValue(result);
     },
   });
+
+  const handleKeyPress = useCallback((event) => {
+    if (event.key === 'q') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/assessment/quiz");
+      stop();
+    }
+    else if (event.key === 'g') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/assessment/board");
+      stop();
+    }
+    else if (event.key === 'c') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/CodeSense");
+      stop();
+    }
+    else if (event.key === 'h') {
+      console.log(`Key pressed: ${event.key}`);
+      navigate("/");
+      stop();
+    }
+    else if (event.key === 's') {
+      console.log(`Key pressed: ${event.key}`);
+      startListening();
+    }
+    else {
+      speak({
+        text: "Invalid key! Try again. ",
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    // attach the event listener
+    document.addEventListener('keydown', handleKeyPress);
+
+    // remove the event listener
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [handleKeyPress]);
 
   const selectAnswer = async (i) => {
     let arr = [...selected];
@@ -159,6 +203,24 @@ const Quiz = () => {
         speak({ text: "Stopped", queue: false });
         break;
 
+      case "reset":
+        setFinish(false);
+        setReset(true);
+        setScore(0);
+        setQuestion(0);
+        setSelected([]);
+        break;
+
+      case "play game":
+        setFinish(false);
+        setReset(true);
+        setScore(0);
+        setQuestion(0);
+        setSelected([]);
+        navigate("/assessment/board");
+        stop();
+        break;
+
       default:
         break;
     }
@@ -173,19 +235,41 @@ const Quiz = () => {
       setQuestion(question + 1);
     } else if (where === "prev" && question > 0) {
       setQuestion(question - 1);
-    } else if (where === "next" && question === questionSet.length - 1) {
-      stop();
+    } else if (where === "next" && question === questions.length - 1) {
+      setFinish(true);
       speak({
         text: `You have completed the quiz, your score is ${score}`,
         queue: false,
       });
-      navigate("/assessment/quiz", { state: { score } });
+      // navigate("/assessment/quiz", { state: { score } });
     }
   };
+
+  // useEffect(async () => {
+  //   setSelected([]);
+  //   setScore(0);
+  //   setFinish(false);
+  //   setQuestion(0);
+  //   setReset(false);
+  // }, [reset, setReset, setFinish]);
 
   return (
     <div className="Quiz">
       <h1>Quiz</h1>
+      <div className={`winner ${(finish === true) ? "" : "shrink"}`}>
+        {/* Display the current winner */}
+        <div className="winner-text">Well Done!</div>
+        {(score !== 0 && score !=null && (finish === true)) && <div>Quiz Score: {score}</div>}
+
+        {/* Button used to reset the board */}
+        <button onClick={() => {
+          setScore(0);
+          setQuestion(0);
+          setSelected([]);
+          setReset(true);
+          setFinish(false);
+        }}>Reset Board</button>
+      </div>
       <div className="question-section">
         <p className="question">
           {" "}
