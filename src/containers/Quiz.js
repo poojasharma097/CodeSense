@@ -221,6 +221,17 @@ const Quiz = () => {
         stop();
         break;
 
+      case "open code sense":
+      case "open codesense":
+        setFinish(false);
+        setReset(true);
+        setScore(0);
+        setQuestion(0);
+        setSelected([]);
+        navigate("/CodeSense");
+        stop();
+        break;
+
       default:
         break;
     }
@@ -235,7 +246,7 @@ const Quiz = () => {
       setQuestion(question + 1);
     } else if (where === "prev" && question > 0) {
       setQuestion(question - 1);
-    } else if (where === "next" && question === questions.length - 1) {
+    } else if (where === "next" && question === questionSet.length - 1) {
       setFinish(true);
       speak({
         text: `You have completed the quiz, your score is ${score}`,
@@ -268,7 +279,7 @@ const Quiz = () => {
           setSelected([]);
           setReset(true);
           setFinish(false);
-        }}>Reset Board</button>
+        }}>Reset Quiz</button>
       </div>
       <div className="question-section">
         <p className="question">
