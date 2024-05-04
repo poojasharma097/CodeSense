@@ -143,6 +143,14 @@ const Board = () => {
         setReset(true);
         navigate("/assessment/quiz");
         stop();
+        break;
+      case "open code sense":
+      case "open codesense":
+        setRepeatedMove(0);
+        setReset(true);
+        navigate("/CodeSense");
+        stop();
+        break;
       default:
         break;
     }
