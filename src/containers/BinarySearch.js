@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { useNavigate } from "react-router-dom";
 
 function AlgorithmVisualizer() {
+    const navigate = useNavigate();
     const [arr, setArr] = useState([]);
     const [sortedArr, setSortedArr] = useState([]);
     const [N] = useState(8);
     const [inputValue, setInputValue] = useState('');
     const [resultMessage, setResultMessage] = useState('');
     const [instructionSpoken, setInstructionSpoken] = useState(false);
-    const { speak } = useSpeechSynthesis(); // Using the speech synthesis hook
+    const { speak, stop } = useSpeechSynthesis(); // Using the speech synthesis hook
 
     useEffect(() => {
         if (!instructionSpoken) {
@@ -20,6 +22,48 @@ function AlgorithmVisualizer() {
             return () => clearTimeout(timeoutId);
         }
     }, [speak, instructionSpoken]);
+
+    const handleKeyPress = useCallback((event) => {
+        if (event.key === 'q') {
+          console.log(`Key pressed: ${event.key}`);
+          navigate("/assessment/quiz");
+          stop();
+        }
+        else if (event.key === 'g') {
+          console.log(`Key pressed: ${event.key}`);
+          navigate("/assessment/board");
+          stop();
+        }
+        else if (event.key === 'c') {
+          console.log(`Key pressed: ${event.key}`);
+          navigate("/CodeSense");
+          stop();
+        }
+        else if (event.key === 'h') {
+          console.log(`Key pressed: ${event.key}`);
+          navigate("/");
+          stop();
+        }
+        else if (event.key === 's') {
+          console.log(`Key pressed: ${event.key}`);
+          genArray();
+        }
+        else {
+          speak({
+            text: "Invalid key! Try again. ",
+          });
+        }
+      }, []);
+    
+      useEffect(() => {
+        // attach the event listener
+        document.addEventListener('keydown', handleKeyPress);
+    
+        // remove the event listener
+        return () => {
+          document.removeEventListener('keydown', handleKeyPress);
+        };
+      }, [handleKeyPress]);
 
     const genArray = () => {
         setResultMessage(''); // Clear result message
@@ -37,9 +81,15 @@ function AlgorithmVisualizer() {
             const sortedArray = [...array].sort((a, b) => a.value - b.value);
             setSortedArr(sortedArray);
             speak({ text: "Sorting the generated array", queue: false });
+            let s = "The elements of array are ";
+            for (var i=0;i<sortedArray.length;i++) {
+                s += sortedArray[i].value;
+                s += " ";
+            } 
+            s += ". Enter the number you want to search:";
             setTimeout(() => {
                 // speak({ text: "Array sorted", queue: false });
-                speak({ text: "Enter the number you want to search:", queue: false });
+                speak({ text: s, queue: false });
             }, 3000); // Delay for sorting visualization
         }, 3000); // Delay for unsorted array display
     };

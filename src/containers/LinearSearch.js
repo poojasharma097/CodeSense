@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { useNavigate } from "react-router-dom";
 
 function AlgorithmVisualizer() {
+    const navigate = useNavigate();
     const [arr, setArr] = useState([]);
     const [N] = useState(8); // Adjusted array size to 8
     const [inputValue, setInputValue] = useState('');
     const [resultMessage, setResultMessage] = useState('');
     const [instructionSpoken, setInstructionSpoken] = useState(false);
-    const { speak } = useSpeechSynthesis();
+    const { speak, stop } = useSpeechSynthesis();
 
     useEffect(() => {
         if (!instructionSpoken) {
@@ -20,13 +22,62 @@ function AlgorithmVisualizer() {
         }
     }, [speak, instructionSpoken]);
 
+    const handleKeyPress = useCallback((event) => {
+        if (event.key === 'q') {
+          console.log(`Key pressed: ${event.key}`);
+          navigate("/assessment/quiz");
+          stop();
+        }
+        else if (event.key === 'g') {
+          console.log(`Key pressed: ${event.key}`);
+          navigate("/assessment/board");
+          stop();
+        }
+        else if (event.key === 'c') {
+          console.log(`Key pressed: ${event.key}`);
+          navigate("/CodeSense");
+          stop();
+        }
+        else if (event.key === 'h') {
+          console.log(`Key pressed: ${event.key}`);
+          navigate("/");
+          stop();
+        }
+        else if (event.key === 's') {
+          console.log(`Key pressed: ${event.key}`);
+          genArray();
+        }
+        else {
+          speak({
+            text: "Invalid key! Try again. ",
+          });
+        }
+      }, []);
+    
+      useEffect(() => {
+        // attach the event listener
+        document.addEventListener('keydown', handleKeyPress);
+    
+        // remove the event listener
+        return () => {
+          document.removeEventListener('keydown', handleKeyPress);
+        };
+      }, [handleKeyPress]);
+
     const genArray = () => {
         const newArray = [];
         for (let i = 0; i < N; i++) {
             newArray.push({ value: Math.floor(Math.random() * 100 + 1), color: '#40E0D0' });
         }
         setArr(newArray);
-        speak({ text: "Enter the number you want to search:", queue: false });
+        let s = "The elements of array are ";
+        for (var i=0;i<newArray.length;i++) {
+            s += newArray[i].value;
+            s += " ";
+        } 
+        console.log(s);
+        s += ". Enter the number you want to search:";
+        speak({ text: s, queue: false });
     };
 
     const linearSearch = async () => {
