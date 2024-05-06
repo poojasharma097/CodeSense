@@ -58,14 +58,19 @@ const Landing = () => {
       setValue(result);
       switch (result) {
         case "open code sense":
+        case "codesense":
+        case "code sense":
+        case "open codesense":
           navigate("/CodeSense");
           stop();
           break;
         case "give quiz":
+        case "quiz":
           navigate("/assessment/quiz");
           stop();
           break;
         case "play game":
+        case "game":
           navigate("/assessment/board");
           stop();
           break;

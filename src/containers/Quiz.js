@@ -38,6 +38,8 @@ const Quiz = () => {
   const { speak, speaking, cancel } = useSpeechSynthesis();
   const [finish, setFinish] = useState(false);
   const [reset, setReset] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [answerKey, setAnswerKey] = useState([]);
 
   const { listen, stop } = useSpeechRecognition({
     onResult: (result) => {
@@ -94,7 +96,14 @@ const Quiz = () => {
 
     arr[question] = option;
 
-    if (option === questionSet[question].answer) setScore(score + 1);
+    if (option === questionSet[question].answer) {
+      setScore(score + 1);
+      selectedOptions.push(1);
+      answerKey.push(questionSet[question].answer);
+    } else {
+      selectedOptions.push(0);
+      answerKey.push(questionSet[question].answer);
+    }
 
     await speak({ text: "Selected " + option, queue: false });
     setSelected(arr);
@@ -110,7 +119,7 @@ const Quiz = () => {
   const readQuestionAndOptions = async () => {
     await speak({ text: "current question: ", queue: true });
     await speak({ text: questionSet[question].question, queue: true });
-    return;
+    listen();
   };
 
   useEffect(() => {
@@ -155,21 +164,29 @@ const Quiz = () => {
 
       case "select option 1":
       case "select option one":
+      case "option 1":
+      case "option one":
         selectAnswer(0);
         break;
 
       case "select option 2":
       case "select option two":
+      case "option 2":
+      case "option two":
         selectAnswer(1);
         break;
 
       case "select option 3":
       case "select option three":
+      case "option 3":
+      case "option three":
         selectAnswer(2);
         break;
 
       case "select option 4":
       case "select option four":
+      case "option 4":
+      case "option four":
         selectAnswer(3);
         break;
 
@@ -198,10 +215,10 @@ const Quiz = () => {
         }
         break;
 
-      case "stop":
-        stop();
-        speak({ text: "Stopped", queue: false });
-        break;
+      // case "stop":
+      //   stop();
+      //   speak({ text: "Stopped", queue: false });
+      //   break;
 
       case "reset":
         setFinish(false);
@@ -209,6 +226,8 @@ const Quiz = () => {
         setScore(0);
         setQuestion(0);
         setSelected([]);
+        selectedOptions([]);
+        setAnswerKey([]);
         break;
 
       case "play game":
@@ -217,6 +236,8 @@ const Quiz = () => {
         setScore(0);
         setQuestion(0);
         setSelected([]);
+        selectedOptions([]);
+        setAnswerKey([]);
         navigate("/assessment/board");
         stop();
         break;
@@ -228,6 +249,8 @@ const Quiz = () => {
         setScore(0);
         setQuestion(0);
         setSelected([]);
+        selectedOptions([]);
+        setAnswerKey([]);
         navigate("/CodeSense");
         stop();
         break;
@@ -270,7 +293,17 @@ const Quiz = () => {
       <div className={`winner ${(finish === true) ? "" : "shrink"}`}>
         {/* Display the current winner */}
         <div className="winner-text">Well Done!</div>
-        {(score !== 0 && score !=null && (finish === true)) && <div>Quiz Score: {score}</div>}
+        <span>Correct Answers: </span>
+        <div>
+        {(selectedOptions[0]===1) && <span> 1,</span>}
+        {(selectedOptions[1]===1) && <span> 2,</span>}
+        {(selectedOptions[2]===1) && <span> 3,</span>}
+        {(selectedOptions[3]===1) && <span> 4,</span>}
+        {(selectedOptions[4]===1) && <span> 5</span>}
+        </div>
+        <span>Answer Key: </span>
+        <span> {answerKey[0]}, {answerKey[1]}, {answerKey[2]}, {answerKey[3]},  {answerKey[4]}</span>
+        {(selectedOptions.length !== 0 && score !=null && (finish === true)) && <div>Quiz Score: {score}</div>}
 
         {/* Button used to reset the board */}
         <button onClick={() => {
@@ -279,6 +312,7 @@ const Quiz = () => {
           setSelected([]);
           setReset(true);
           setFinish(false);
+          setSelectedOptions([]);
         }}>Reset Quiz</button>
       </div>
       <div className="question-section">

@@ -130,10 +130,10 @@ const Board = () => {
       case "9":
         draw(9);
         break;
-      case "stop":
-        stop();
-        speak({ text: "Stopping" });
-        break;
+      // case "stop":
+      //   stop();
+      //   speak({ text: "Stopping" });
+      //   break;
       case "reset":
         setRepeatedMove(0);
         setReset(true);
