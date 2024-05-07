@@ -119,13 +119,13 @@ function AlgorithmVisualizer() {
                         changeColor(currentIndex, 'yellow'); // Highlight search space in yellow
                         currentIndex++;
                     }
-                }, 200); // Delay between color changes
+                }, 550); // Delay between color changes
             }, 1500); // Delay for visualization
         });
 
             await new Promise(resolve => {
                 setTimeout(() => {
-                    speak({ text: `Checking ${midVal}.`, queue: false });
+                    speak({ text: `Comparing the target with middle element ${midVal}.`, queue: false });
                     changeColor(mid, 'yellow'); 
                     resolve();
                 }, 1200); // Delay for visualization
