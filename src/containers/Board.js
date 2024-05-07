@@ -112,6 +112,7 @@ const Board = () => {
         break;
       case "six":
       case "right":
+      case "write":
       case "6":
         draw(6);
         break;

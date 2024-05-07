@@ -96,7 +96,14 @@ const Choose2 = () => {
         speak({ text: "You have chosen to read documentation", queue: false });
         stop();
         navigate("/CodeSense/Documentation");
-      } else {
+      } else if (value.toLowerCase() === "play game" || value.toLowerCase() === "game") {
+        navigate("/assessment/board");
+        stop();
+      } else if (value.toLowerCase() === "give quiz" || value.toLowerCase() === "quiz") {
+        navigate("/assessment/quiz");
+        stop();
+      }
+      else {
         // If the input doesn't match any options, continue listening
         listen();
       }

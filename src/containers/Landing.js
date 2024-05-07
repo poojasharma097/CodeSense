@@ -78,9 +78,7 @@ const Landing = () => {
           stop();
           break;
         default:
-          // speak({
-          //   text: "Give your command.",
-          // });
+          listen();
           break;
       }
     },
