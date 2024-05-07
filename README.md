@@ -1,4 +1,4 @@
-# Beyond Braille
+# Beyond Vision
 
 ## Steps to run the project:
 
@@ -15,58 +15,66 @@
 
 ### Landing Page
 
-We can navigate to algorithm visualizer, quiz or game page via the navbar
+We can navigate to CodeSense, quiz or game page via the navbar. We can also click on the give command button which starts voice recognition and accepts commands: give quiz, play game, open codesense.
 
-- We can also click on the give command button, it starts voice recognition and accepts commands: give quiz, play game
+### CodeSense
 
-### Quiz/examination page
+![image](https://github.com/poojasharma097/CodeSense/blob/master/screenshots/BV-Codesense.png)
 
-![image](https://user-images.githubusercontent.com/71427348/165894611-69fb8aeb-4fc5-40e5-9e52-4bd7ac96b567.png)
+- We can select linear search or binary search or documentation to understand the algorithm.
+- We can click on "start voice recognition". It starts listening to our voice and accepts commands like:
+  - Linear search
+  - Binary search
+  - Read
+- In linear search and binary search, the user can click on the "generate array" button to generate a new array.
+- The user can enter the number that he/she wants to search.
+- The user can click on the "explanation" button to listen to the simple explanation of the algorithm.
 
-- We can select options for answers as such
-  ![image](https://user-images.githubusercontent.com/71427348/165894635-211abe4b-1930-4392-a182-9c5111efc8a0.png)
-  and move to the next and previous questions via the buttons provided down below.
-- We can click on "start voice recognition"
-- it starts listening to our voice, accepted commands being:
-- read question
-- read options
-- next question
-- previous question
-- read option 1
-- read option 2
-- read option 3
-- read option 4
-- select option 1
-- select option 2
-- select option 3
-- select option 4
-- read selected option
-- read all selected options
-- reset
-- play game
-- stop
+![image](https://github.com/poojasharma097/CodeSense/blob/master/screenshots/BV-LinearSearchResult.png)
+
+![image](https://github.com/poojasharma097/CodeSense/blob/master/screenshots/BV-BinarySearchResult.png)
+
+### Quiz page
+
+![image](https://github.com/poojasharma097/CodeSense/blob/master/screenshots/BV-Quiz.png)
+
+- We can select options and move to the next and previous questions via the buttons provided down below.
+- We can click on "start voice recognition". It starts listening to our voice and accepts commands like:
+  - read question
+  - read options
+  - next question
+  - previous question
+  - read option 1
+  - read option 2
+  - read option 3
+  - read option 4
+  - select option 1
+  - select option 2
+  - select option 3
+  - select option 4
+  - read selected option
+  - reset
+  - play game
 
 ### Game/Tic Tac Toe Page
 
-![image](https://user-images.githubusercontent.com/71427348/165895371-897363ef-7408-4349-9292-70e61eee874a.png)
+![image](https://github.com/poojasharma097/CodeSense/blob/master/screenshots/BV-Game.png)
 
-- We can start playing by clicking on the boxes
-  ![image](https://user-images.githubusercontent.com/71427348/165895491-c0a1d143-172c-4af2-94e8-3ffa2b893dbf.png)
-- The system will automatically read out which player's turn it is
+- We can start playing by clicking on the boxes.
+- The system will automatically read out which player's turn it is.
 - When the game detects a win/tie, a message is popped up as such
-  ![image](https://user-images.githubusercontent.com/71427348/165895542-c8451c86-1100-433a-ac2e-41a54384d9a8.png)
-- We can reset the board by clicking the button
-- We can also use this page using voice recognition by clicking on the start game button
-- The list of commands recognized by the system are as follows:
-- top left / 1
-- top center/ 2
-- top right / 3
-- left / 4
-- center / 5
-- right / 6
-- bottom left / 7
-- bottom center/ 8
-- bottom right / 9
-- reset
-- give quiz
-- stop
+  ![image](https://github.com/poojasharma097/CodeSense/blob/master/screenshots/BV-GameResult.png)
+- We can reset the board by clicking the button.
+- We can also play this game using voice recognition by clicking on the start game button.
+- The list of commands recognized by the application are as follows:
+  - top left / 1
+  - top center/ 2
+  - top right / 3
+  - left / 4
+  - center / 5
+  - right / 6
+  - bottom left / 7
+  - bottom center/ 8
+  - bottom right / 9
+  - reset
+  - give quiz
